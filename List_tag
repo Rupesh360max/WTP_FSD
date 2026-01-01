@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="C0A000">
+    
+    <font color="blue">
+    <h3 align="center"> CSSimplified.com examples.. </a></h3>
+    <h1 align="center">Dishes</a> </h1>
+    </font>
+
+    <ol>
+        <font color="blue">
+
+        <li>Punjabi</li>
+        <ul>
+            <li>Veg. Mugali</li>
+            <li>Veg. Tawa Masala</li>
+            <li>paneer Tikka Masala</li>
+            <li>Paneer Masala</li>
+            <li>Paneer Pasanda</li>
+        </ul>
+
+        <li>Chinese</li>
+        <ul>
+            <li>American Company</li>
+            <li>veg. Hakka Noodels</li>
+            <li>Veg. Shezwan Rice</li>
+            <li>Veg. Fried Rice</li>
+            <li>Veg. Triple Rice</li>
+        </ul>
+
+        <li>Soups</li>
+        <ul>
+            <li>Sweet Corn Soup</li>
+            <li>Veg. Manchow soap</li>
+            <li>Tomato Soap</li>
+            <li>Hot n Saur soop</li>
+            <li>Palak Soap</li>
+        </ul>
+
+        <li>Juices</li>
+        <ul>
+            <li>Mosambi</li>
+            <li>Pineapple</li>
+            <li>Orange</li>
+            <li>WaterMelon</li>
+            <li>Grapes</li>
+        </ul>
+
+        <li>soups</li>
+        <ul>
+            <li>Sweet Corn Soup</li>
+            <li>Veg. Manchow soap</li>
+            <li>Tomato Soap</li>
+            <li>Hot n Saur soop</li>
+            <li>Palak Soap</li>
+        </ul>
+        <li>Juices</li>
+        <ul>
+            <li>Mosambi</li>
+            <li>Pineapple</li>
+            <li>Orange</li>
+            <li>WaterMelon</li>
+            <li>Grapes</li>
+        </ul>
+
+        </font>
+    </ol>
+
+</body>
+</html>
