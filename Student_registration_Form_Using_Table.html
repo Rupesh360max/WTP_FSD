@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 align="center">Student registration Form Using Table in HTML</h3>
+
+    <form>
+        <table>
+
+            <tr>
+            <td><label>First Name</label></td>
+            <td><input type="text" name="txtfname" value="" placeholder="Rupesh" maxlength="50" /></td>
+            <td>(Max 50 Character Allowed)</td>
+            </tr>
+            
+            <tr>
+            <td><label>Last Name</label></td>
+            <td><input type="text" name="txtlname" value="" placeholder="Sah" maxlength="50" /></td>
+            <td>(Max 50 Character Allowed)</td>
+            </tr>
+
+            
+            <tr>
+            <td><label>Email ID</label></td>
+            <td><input type="email" name="txtemail" value="" placeholder="rkumar@gmail.com" maxlength="50" /></td>
+            <td>(Max 50 Character Allowed)</td>
+            </tr>
+
+            
+            <tr>
+            <td><label>Mobile Number</label></td>
+            <td><input type="number" name="txtmobile" value="" placeholder="7842xxxxxx" max="10" /></td>
+            <td>(Max 50 Character Allowed)</td>
+            </tr>
+
+            
+            <tr>
+            <td><label>Gender</label></td>
+            <td><input type="radio" name="g1" value="Male" />Male</td>
+            <td><input type="radio" name="g1" value="Female" />Female </td>
+            </tr>
+
+            <tr>
+                <td>Date of Birth(DOB)</td>
+                <td>
+                    <select name="day">
+                        <option>Day</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                        <option value="">7</option>
+                    </select>
+
+                        <select name="Month">
+                            <option value="">Month</option>
+                            <option value="">January</option>
+                            <option value="">February</option>
+                            <option value="">March</option>
+                            <option value="">April</option>
+                            <option value="">May</option>
+                            <option value="">June</option>
+                            <option value="">July</option>
+                            <option value="">August</option>
+                            <option value="">September</option>
+                            <option value="">October</option>
+                            <option value="">November</option>
+                            <option value="">December</option>
+                        </select>
+
+                        <select name="Year">
+                            <option value="">Year</option>
+                            <option value="">2000</option>
+                            <option value="">2001</option>
+                            <option value="">2002</option>
+                            <option value="">2003</option>
+                            <option value="">2004</option>
+                            <option value="">2005</option>
+                            <option value="">2006</option>
+                            <option value="">2007</option>
+                            <option value="">2008</option>
+                            <option value="">2009</option>
+                            <option value="">2010</option>
+                            <option value="">2011</option>
+                        </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Address</label></td>
+                <td><textarea name="txtaddress" value=""></textarea> </td>
+            </tr>
+
+            <tr>
+                <td><label>City</label></td>
+                <td><input type="text" name="txtcity" value="" placeholder="Banglore" maxlength="50" /></td>
+                <td>(Max 50 Character Allowed)</td>
+            </tr>
+
+            <tr>
+                <td><label>Pin Code</label></td>
+                <td><input type="number" name="txtpincode" value="" placeholder="560068" max="6" /></td>
+                <td>(Max 6 Character Allowed)</td>
+            </tr>
+
+            <tr>
+                <td><label>State</label></td>
+                <td><input type="text" name="txtstate" value="" placeholder="Karnatak" maxlength="50" /></td>
+                <td>(Max 50 Character Allowed)</td>
+            </tr>
+
+            <tr>
+                <td><label>Country</label></td>
+                <td><input type="text" name="txtcountry" value="" placeholder="India" /></td>
+            </tr>
+
+            <tr>
+                <td><label>Hobbies</label></td>
+                <td><input type="checkbox" name="h1" value="Drawing" /><label>Drawing</label> </td>
+                <td><input type="checkbox" name="h2" value="Singing" /><label>Singing</label> </td>
+                <td><input type="checkbox" name="h3" value="Dancing" /><label>Dancing</label> </td>
+                <td><input type="checkbox" name="h4" value="Sketching" /><label>Sketching</label> </td>
+                <td><input type="checkbox" name="h5" value="Others" /><label>Others</label> </td>
+                <td><input type="text" name="others" placeholder="Ex-Teaching" maxlength="50"></td>
+                <td>(Max 50 Characters Allowed)</td>
+            </tr>
+
+            <tr>
+                <td><label>Qualifications</label></td>
+                <td><input type="checkbox" name="h1" value="10th" /><label>High School(10th)</label> </td>
+                <td><input type="checkbox" name="h2" value="12th" /><label>Higher School(12th)</label> </td>
+                <td><input type="checkbox" name="h3" value="Bachlor" /><label>Graduation(Bachlors)</label> </td>
+                <td><input type="checkbox" name="h4" value="Masters" /><label>Post Graduation(Masters)</label> </td>
+                <td><input type="checkbox" name="h5" value="Phd" /><label>Phd</label> </td>
+            </tr>
+
+            <tr>
+                <td><label>Courses Applied For</label></td>
+                <td><input type="checkbox" name="h1" value="BCA" /><label>BCA(Bachelor of Computer Applications)</label> </td>
+                <td><input type="checkbox" name="h2" value="B.Com" /><label>B.Com(Bachelorof Commerce)</label> </td>
+                <td><input type="checkbox" name="h3" value="B.Sc" /><label>B.Sc(Bachelor of Science)</label> </td>
+                <td><input type="checkbox" name="h4" value="BA" /><label>BA(Bachelor of Arts)</label> </td>
+                <td><input type="checkbox" name="h5" value="MCA" /><label>MCA(Master of Computer Applications)</label> </td>              
+                <td><input type="checkbox" name="h6" value="M.Com" /><label>M.Com(Master of Commerce)</label> </td>
+                <td><input type="checkbox" name="h7" value="M.Sc" /><label>M.Sc(Master of Science)</label> </td>
+                <td><input type="checkbox" name="h8" value="MA" /><label>MA(Master of Arts)</label> </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="submit" name="b1">Submit</button>
+                    <button type="reset" name="b2">Reset</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
