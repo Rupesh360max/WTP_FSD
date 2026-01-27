@@ -102,12 +102,10 @@ $currentScore = $_SESSION['score'];
         <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-body">
-
-                    <!-- QUESTION -->
+                    
                     <h5>Question <?php echo $_SESSION['index'] + 1; ?> / 10</h5>
                     <p><?php echo $q['q']; ?></p>
 
-                    <!-- OPTIONS -->
                     <form method="post">
                         <?php foreach ($q['options'] as $key => $opt): ?>
                             <div class="form-check">
@@ -133,4 +131,5 @@ $currentScore = $_SESSION['score'];
 
 </body>
 </html>
+
 
