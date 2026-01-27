@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-/* QUESTIONS ARRAY */
 $questions = [
     [
         "q" => "PHP stands for?",
@@ -55,14 +54,12 @@ $questions = [
     ]
 ];
 
-/* INITIALIZE SESSION */
 if (!isset($_SESSION['order'])) {
     $_SESSION['order'] = array_rand($questions, 10);
     $_SESSION['index'] = 0;
     $_SESSION['score'] = 0;
 }
 
-/* CHECK ANSWER */
 if (isset($_POST['option'])) {
     $current = $_SESSION['order'][$_SESSION['index']];
     if ($_POST['option'] == $questions[$current]['answer']) {
@@ -71,7 +68,6 @@ if (isset($_POST['option'])) {
     $_SESSION['index']++;
 }
 
-/* FINISH QUIZ */
 if ($_SESSION['index'] >= 10) {
     $finalScore = $_SESSION['score'];
     session_destroy();
@@ -88,7 +84,6 @@ if ($_SESSION['index'] >= 10) {
     exit;
 }
 
-/* CURRENT QUESTION */
 $qIndex = $_SESSION['order'][$_SESSION['index']];
 $q = $questions[$qIndex];
 $currentScore = $_SESSION['score'];
@@ -122,7 +117,6 @@ $currentScore = $_SESSION['score'];
                             </div>
                         <?php endforeach; ?>
 
-                        <!-- SCORE + BUTTON -->
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <span class="badge bg-success fs-6">
                                 Score: <?php echo $currentScore; ?> / 10
@@ -139,3 +133,4 @@ $currentScore = $_SESSION['score'];
 
 </body>
 </html>
+
