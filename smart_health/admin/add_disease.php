@@ -1,10 +1,19 @@
 <?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
+<?php
 $msg = "";
 if (isset($_POST['add_disease'])) {
     $disease_name = $_POST['disease_name'];
     $disease_description = $_POST['disease_description'];
 
-    $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    // $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    include "../config/db.php";
+    $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());

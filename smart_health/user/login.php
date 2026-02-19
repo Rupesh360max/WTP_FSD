@@ -1,3 +1,28 @@
+<?php
+$msg = "";
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    include '../config/db.php';
+    $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    $qry = "SELECT * FROM users WHERE email='$username' AND password='$password'";
+    $result = mysqli_query($conn, $qry);
+    if(mysqli_num_rows($result)>0){
+        $row = mysqli_fetch_assoc($result);
+        session_start();
+        $_SESSION['userid'] = $row['uid'];
+        $_SESSION['username'] = $row['email'];
+
+        header("Location: dashboard.php");
+
+    }
+    else{
+        $msg = "<b class='text-danger m-5'>Invalid username or password!!!</b>";
+    }
+    mysqli_close($conn);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +45,11 @@
                     <input type="password" class="form-control mb-3" placeholder="Password" required>
                     <button class="btn btn-success w-100">Login</button>
                 </form>
+
+                <?php 
+                    echo $msg; 
+                ?>
+                
             </div>
         </div>
     </div>

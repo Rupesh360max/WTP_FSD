@@ -7,7 +7,8 @@ if(isset($_POST['btn_reg'])){
     $confirm_password = $_POST['confirm_password'];
     $gender = $_POST['gender'];
     $mobile = $_POST['mobile'];
-    $conn = mysqli_connect("localhost","root","","smart_health");
+    include "../config/db.php";
+    $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
 
      if(!$conn){
         die("Connection Failed");
@@ -38,6 +39,21 @@ if(isset($_POST['btn_reg'])){
     <meta charset="UTF-8">
     <title>Smart Health</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script>
+    function validate(){
+        let email = document.getElementById("t2").value;
+        let obj = new XMLHttpRequest();
+        obj.open("get", "validate_email.php?eid="+email, true);
+        obj.send();
+        obj.onreadystatechange=function(){
+            if(obj.readyState == 4 && obj.status == 200){
+                document.getElementById("l1").innerHTML = obj.responseText;
+
+            }
+        }
+
+    }
+</script>
 </head>
 <body>
 <?php include "../includes/header.php"; ?>
@@ -50,7 +66,8 @@ if(isset($_POST['btn_reg'])){
 
                 <form method="post">
                     <input type="text" name="name" class="form-control mb-2" placeholder="Full Name" required>
-                    <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+                    <input type="email" id="t2" name="email" onchange="validate()" class="form-control mb-2" placeholder="Email" required>
+                    <label id="l1"></label>
                     <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
                     <input type="password" name="confirm_password" class="form-control mb-2" placeholder="Confirm Password" required>
 

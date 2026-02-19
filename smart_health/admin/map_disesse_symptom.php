@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
 <?php include "../includes/header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +23,10 @@
         <select name="disease" class="form-control mb-3" required>
             <option value="">---Select Disease---</option>
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "smart_health");
+            // $conn = mysqli_connect("localhost", "root", "", "smart_health");
+            include "../config/db.php";
+            $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
+            
             $qry = "select * from diseases";
             $result = mysqli_query($conn, $qry);
 

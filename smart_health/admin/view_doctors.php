@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +27,9 @@
         </thead>
         <tbody>
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "smart_health");
+            // $conn = mysqli_connect("localhost", "root", "", "smart_health");
+            include "../config/db.php";
+            $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
             $qry = "SELECT * FROM doctors";
             $result = mysqli_query($conn, $qry);
 

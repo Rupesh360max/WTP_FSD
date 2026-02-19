@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
 <?php include "../includes/header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +17,9 @@
     <div class="container mt-5">
         <h3 class="mb-4">View Disease-Symptom Mapping</h3>
         <?php
-        $conn = mysqli_connect("localhost", "root", "", "smart_health");
+        // $conn = mysqli_connect("localhost", "root", "", "smart_health");
+        include "../config/db.php";
+        $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }

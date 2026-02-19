@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +20,10 @@
     <h3 class="mb-4">View Diseases</h3>
 
     <?php
-    $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    // $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    include "../config/db.php";
+    $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
+    
     $qry = "SELECT * FROM diseases";
     $result = mysqli_query($conn, $qry);
     if(mysqli_num_rows($result) > 0){

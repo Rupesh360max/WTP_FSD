@@ -1,9 +1,18 @@
 <?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
+<?php
 $msg = "";
 if (isset($_POST['add_symptom'])) {
     $symptom_name = $_POST['symptom_name'];
 
-    $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    // $conn = mysqli_connect("localhost", "root", "", "smart_health");
+    include "../config/db.php";
+    $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -21,7 +30,21 @@ if (isset($_POST['add_symptom'])) {
 
     mysqli_close($conn);
 }
-
+if (isset($_GET['sid'])) {
+    $id =  $_GET['sid'];
+    $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
+    $qry = "select * from symptoms where symptom_id = $id";
+    $result = mysqli_query($conn, $qry);
+    $row = mysqli_fetch_assoc($result);
+}
+if(isset($_POST['update_symptom'])){
+    $id = $_POST['id'];
+    $symptom_name = $_POST['symptom_name'];
+    $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
+    $qry = "update symptoms set symptom_name = '$symptom_name' where symptom_id = $id";
+    mysqli_query($conn, $qry);
+    header("Location: view_symptoms.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,16 +57,38 @@ if (isset($_POST['add_symptom'])) {
 <body>
 <?php include "../includes/header.php"; ?>
 <div class="container mt-5">
-    <h4 class="mb-4">Add New Symptom</h4>
+
+<?php 
+if(isset($_GET['sid'])){
+    echo "<h3 class='mb-4'>Edit Symptom</h3>"; } 
+    else { echo "<h3 class='mb-4'>Add Symptom</h3>";
+}
+?>
     <form method="post">
+        <?php if(isset($_GET['sid'])){ 
+            echo "<input type='hidden' name='id' value='" . $row['symptom_id'] . "'>"; } 
+        ?>
 
-        <div class="mb-3">
-            <input type="text" name="symptom_name" class="form-control" placeholder="Symptom Name" required>
-        </div>
-        
-        <button type="submit" name="add_symptom" class="btn btn-primary">Add Symptom</button>
+            <div class="mb-3">
+                <input type="text" value ="
 
-        <a href="../admin/dashboard.php" class="btn btn-secondary">Go to Dashboard</a>
+                    <?php if(isset($_GET['sid'])){ 
+                        echo $row['symptom_name']; } ?>"
+                
+                name="symptom_name" class="form-control" placeholder="Symptom Name" required>
+            </div>
+            
+            <button type="submit" name="add_symptom" class="btn btn-primary">
+            <?php 
+            if(isset($_GET['sid']))
+                echo "Update symptom"; 
+                
+            else 
+                echo "Add symptom"; 
+                 
+            ?></button>
+
+            <a href="../admin/dashboard.php" class="btn btn-secondary">Go to Dashboard</a>
 
     </form>
 
@@ -54,4 +99,4 @@ if (isset($_POST['add_symptom'])) {
 
 <?php include "../includes/footer.php"; ?>
 </body>
-<html>
+</html>

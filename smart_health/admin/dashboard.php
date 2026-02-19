@@ -1,6 +1,13 @@
 
 <?php include "../includes/header.php"; ?>
 
+<?php
+session_start();
+if(!isset($_SESSION['userid'])){ 
+    header("Location: login.php"); 
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +37,7 @@
             <div class="card shadow p-3">
                 <h5>Manage Symptoms</h5>
                 <p class="text-muted">Add, View, Edit, Delete Symptoms</p>
-                <a href="#" class="btn btn-primary btn-sm">Add</a>
+                <a href="#" class="btn btn-primary btn-sm m-1">Add</a>
                 <a href="#" class="btn btn-outline-primary btn-sm">View</a>
             </div>
         </div>
@@ -39,7 +46,7 @@
             <div class="card shadow p-3">
                 <h5>Manage Diseases</h5>
                 <p class="text-muted">Add, View, Edit, Delete Diseases</p>
-                <a href="#" class="btn btn-success btn-sm">Add</a>
+                <a href="#" class="btn btn-success btn-sm m-1">Add</a>
                 <a href="#" class="btn btn-outline-success btn-sm">View</a>
             </div>
         </div>
@@ -48,7 +55,7 @@
             <div class="card shadow p-3">
                 <h5>Manage Doctors</h5>
                 <p class="text-muted">Add, View, Edit, Delete Doctors</p>
-                <a href="#" class="btn btn-warning btn-sm">Add</a>
+                <a href="#" class="btn btn-warning btn-sm m-1">Add</a>
                 <a href="#" class="btn btn-outline-warning btn-sm">View</a>
             </div>
         </div>
@@ -60,7 +67,7 @@
             <div class="card shadow p-3">
                 <h5>Disease–Symptom Mapping</h5>
                 <p class="text-muted">Map symptoms with diseases</p>
-                <a href="#" class="btn btn-info btn-sm">Map</a>
+                <a href="#" class="btn btn-info btn-sm m-1">Map</a>
                 <a href="#" class="btn btn-outline-info btn-sm">View Mapping</a>
             </div>
         </div>

@@ -62,7 +62,7 @@
 <div class="container mt-5 text-center">
     <h2><b>Smart Health Prediction System</b></h2>
     <p>Select symptoms and get instant health guidance.</p>
-    <a href="../class_work/smart_health/user/login.php" class="btn btn-primary">Get Started</a>
+    <a href="/class_work/smart_health/user/login.php" class="btn btn-primary">Get Started</a>
 
 
     <div class="row mt-5">
