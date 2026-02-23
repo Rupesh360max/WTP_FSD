@@ -1,70 +1,59 @@
-<?php 
-session_start();
-if(isset($_POST['uid'])){
-    header("Location: login.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Smart Health</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Health Prediction System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-<?php include "../includes/header.php"; ?>
+    <!-- HEADER -->
+    <?php include "../includes/header.php" ?>
 
-<div class="container mt-5">
-    <h3 class="mb-4">Select Symptoms</h3>
+    <div class="container-fluid" style="min-height:550px;">
+        <h3>Select Your Symptoms</h3>
 
-    <form method="post" action="result.php">
-        
-            <label for="symptoms" class="form-label">Select Symptoms:</label>
-            <select id="symptoms" name="symptoms[]" class="form-select" multiple required></select>
-                <?php
-            $conn = mysqli_connect("localhost", "root", "", "smart_health");
+        <form action="result.php" method="post">
+            <?php
+            include '../config/db.php';
+            // $symptomid = $_POST['symptoms'];
+            // $s = imploade(",", $symptomid);
+            $conn = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DBNAME);
             $qry = "select * from symptoms";
             $result = mysqli_query($conn, $qry);
 
-            // echo "<table class='table table-bordered'>";
             $i = 0;
-
-            echo "<div class='row g-2'>";
-            while($row = mysqli_fetch_assoc($result)){
-                
-                if($i == 0)
-
-                echo "<div class='row mb-2'>";
-                echo "<div class='col-md-2 mb-2'>";
-                
-                // echo "<td>";
-                echo "<div class='form-check'>";
-                echo "<input type = 'checkbox' name = 'symptoms[]' value = '".$row['symptom_id']."'>";
-                echo "<label class='form-check-label'>".$row['symptom_name']."</label><br>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($i % 6 == 0) {
+                    echo "<div class='row mb-2'>";
+                }
+                echo "<div class=' form-check col-sm-2'>";
+                echo "<input class='form-check-input' type='checkbox'  name='symptoms[]' value='" . $row["symptom_id"] . "'>";
+                echo "<label class= 'form-check-label'>" . $row['symptom_name'] . "</label>";
                 echo "</div>";
-                echo "</div>";
-                // echo "</td>";
 
                 $i++;
-                if($i == 4){
-                    // echo "</tr>";
+                if ($i % 6 == 0) {
                     echo "</div>";
-                    $i = 0;
                 }
             }
-
-            // echo "</table>";
-
             mysqli_close($conn);
             ?>
+            <div class="text-center">
+                <button class="btn btn-primary mt-3 w-20">Predict Disease</button>
+            </div>
+            
+    </div> 
+        </form>
 
-        
-        <button type="submit" name="submit_symptoms" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 
-
-
-<?php include "../includes/footer.php"; ?>
+    <!-- FOOTER -->
+    <?php include "../includes/footer.php" ?>
 </body>
+
 </html>
